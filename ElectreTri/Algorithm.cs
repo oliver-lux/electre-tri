@@ -28,10 +28,72 @@ namespace ElectreTri
                     {
                         perf[i][j] = PP[ind][j] - A[ind][i];
 
-                        //if (perf[i][j] < q[ind])
+                        if (perf[i][j] < q[ind])
+                            c[i][j][ind] = 1;
+                        else if (perf[i][j] > p[ind])
+                            c[i][j][ind] = 0;
+                        else
+                            c[i][j][ind] = 1 - (q[ind] - perf[i][j]) / (q[ind] - p[ind]);
+
+                        if (perf[i][j] < p[ind])
+                            d[i][j][ind] = 0;
+                        else if (perf[i][j] > v[ind])
+                            d[i][j][ind] = 1;
+                        else
+                            d[i][j][ind] = (perf[i][j] - p[ind]) / (v[ind] - p[ind]);
                     }
-                }   
+                }
             }
+
+            var W = GetCube(aColNumber, ppColNumber, aRowNumber);
+            for (int ind = 0; ind < aRowNumber; ind++)
+                for (int i = 0; i < aColNumber; i++)
+                    for (int j = 0; j < ppColNumber; j++)
+                        W[i][j][ind] = w[ind];
+
+
+            double[][] CW = GetMatrix(aColNumber, ppColNumber);
+            double[][] DW = GetMatrix(aColNumber, ppColNumber);
+
+            for (int i = 0; i < aColNumber; i++)
+                for (int j = 0; j < ppColNumber; j++)
+                    for (int ind = 0; ind < aRowNumber; ind++)
+                    {
+                        CW[i][j] += c[i][j][ind] * W[i][j][ind] / 100;
+                        DW[i][j] += d[i][j][ind] * W[i][j][ind] / 100;
+                    }
+
+
+            var CS = GetMatrix(aColNumber, ppColNumber);
+            for (int i = 0; i < aColNumber; i++)
+            {
+                for (int j = 0; j < ppColNumber; j++)
+                {
+                    CS[i][j] = CW[i][j];
+                    for (int ind = 0; ind < aRowNumber; ind++)
+                    {
+                        if (d[i][j][ind] > CW[i][j])
+                        {
+                            CS[i][j] = CS[i][j] * (1 - d[i][j][ind] / (1 - CW[i][j]));
+                        }
+                    }
+                }
+            }
+
+            double[][] prof = GetMatrix(aColNumber, ppColNumber);
+            for (int i = 0; i < aColNumber; i++)
+            {
+                for (int j = 0; j < ppColNumber; j++)
+                {
+                    if (CS[i][j] > t)
+                        prof[i][j] = 1;
+                    else 
+                        prof[i][j] = 0;
+                }
+            }
+
+            result.Rank = prof;
+            result.Cs = CS;
 
             return result;
         }
