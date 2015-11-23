@@ -126,7 +126,7 @@ namespace ElectreTri
         {
             var result = new double[rows][];
 
-            for (var i = 0; i < columns; i++)
+            for (var i = 0; i < rows; i++)
                 result[i] = new double[columns];
 
             return result;

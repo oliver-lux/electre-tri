@@ -34,20 +34,20 @@ namespace ElectreTri
                 }
 
                 double[][] P = ((MLDouble)mfr.GetMLArray("p")).GetArray();
-                double[] p = new double[P.Length];
+                p = new double[P.Length];
                 for (int i = 0; i < P.Length; i++)
                 {
                     p[i] = P[i][0];
                 }
                 double[][] V = ((MLDouble)mfr.GetMLArray("v")).GetArray();
-                double[] v = new double[V.Length];
+                v = new double[V.Length];
                 for (int i = 0; i < V.Length; i++)
                 {
                     v[i] = V[i][0];
                 }
 
                 double[][] WW = ((MLDouble)mfr.GetMLArray("w")).GetArray();
-                double[] w = new double[WW.Length];
+                w = new double[WW.Length];
                 for (int i = 0; i < WW.Length; i++)
                 {
                     w[i] = WW[i][0];
@@ -57,13 +57,6 @@ namespace ElectreTri
             {
                 throw new MatlabIOException("Cannot read file");
             }
-
-            
-
         }
-
-        
-
-
     }
 }
