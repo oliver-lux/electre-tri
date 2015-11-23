@@ -23,7 +23,7 @@ namespace ElectreTri
         {
             try
             {
-                MatFileReader mfr = new MatFileReader("C:\\Studia\\Optymalizacja Wielokryterialna\\el3ow\\el3ow\\matdata.mat");
+                MatFileReader mfr = new MatFileReader(fileName);
                 A = ((MLDouble)(mfr.GetMLArray("A"))).GetArray();
                 PP = ((MLDouble)(mfr.GetMLArray("PP"))).GetArray();
                 double[][] Q = ((MLDouble)(mfr.GetMLArray("q"))).GetArray();
