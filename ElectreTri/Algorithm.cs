@@ -20,11 +20,13 @@ namespace ElectreTri
 
             for (int ind = 0; ind < aRowNumber; ind++)
             {
+                var perf = GetMatrix(aRowNumber, ppColNumber);
+
                 for (int i = 0; i < aColNumber; i++)
                 {
                     for (int j = 0; j < ppColNumber; j++)
                     {
-                        
+                        perf[i][j] = PP[ind][j] - A[ind][i];
                     }
                 }   
             }
