@@ -27,7 +27,32 @@ namespace ElectreTri
                 MatFileReader mfr = new MatFileReader("C:\\Studia\\Optymalizacja Wielokryterialna\\el3ow\\el3ow\\matdata.mat");
                 A = ((MLDouble)(mfr.GetMLArray("A"))).GetArray();
                 PP = ((MLDouble)(mfr.GetMLArray("PP"))).GetArray();
+                double[][] Q = ((MLDouble)(mfr.GetMLArray("q"))).GetArray();
+                q = new double[Q.Length];
+                for (int i = 0; i < Q.Length; i++)
+                {
+                    q[i] = Q[i][0];
+                }
 
+                double[][] P = ((MLDouble)mfr.GetMLArray("p")).GetArray();
+                double[] p = new double[P.Length];
+                for (int i = 0; i < P.Length; i++)
+                {
+                    p[i] = P[i][0];
+                }
+                double[][] V = ((MLDouble)mfr.GetMLArray("v")).GetArray();
+                double[] v = new double[V.Length];
+                for (int i = 0; i < V.Length; i++)
+                {
+                    v[i] = V[i][0];
+                }
+
+                double[][] WW = ((MLDouble)mfr.GetMLArray("w")).GetArray();
+                double[] w = new double[WW.Length];
+                for (int i = 0; i < WW.Length; i++)
+                {
+                    w[i] = WW[i][0];
+                }
             }
             catch (System.IO.IOException)
             {
