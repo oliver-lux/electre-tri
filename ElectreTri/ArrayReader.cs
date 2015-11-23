@@ -12,14 +12,14 @@ namespace ElectreTri
     class ArrayReader
     {
         public double[][] A { get; set;}
-        double[][] PP { get; set; }
-        double[] q { get; set; }
-        double[] p { get; set; }
-        double[] v { get; set; }
-        double[] w { get; set; }
-        double t { get; set; }
+        public double[][] PP { get; set; }
+        public double[] q { get; set; }
+        public double[] p { get; set; }
+        public double[] v { get; set; }
+        public double[] w { get; set; }
+        public double t { get; set; }
 
-        ArrayReader(string fileName)
+        internal ArrayReader(string fileName)
         {
             try
             {
