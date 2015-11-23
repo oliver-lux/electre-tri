@@ -8,7 +8,7 @@ namespace ElectreTri
 {
     class Algorithm
     {
-        Result Solve(double[][] A, double[][] PP, double[] q, double[] p, double[] v, double[] w, double t)
+        public Result Solve(double[][] A, double[][] PP, double[] q, double[] p, double[] v, double[] w, double t)
         {
             var result = PrepareResult(A, PP);
             var aColNumber = GetColNumber(A);
@@ -27,6 +27,8 @@ namespace ElectreTri
                     for (int j = 0; j < ppColNumber; j++)
                     {
                         perf[i][j] = PP[ind][j] - A[ind][i];
+
+                        //if (perf[i][j] < q[ind])
                     }
                 }   
             }
