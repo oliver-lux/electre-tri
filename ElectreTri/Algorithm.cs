@@ -93,7 +93,7 @@ namespace ElectreTri
             }
 
             result.Rank = prof;
-            result.Cs = CS;
+            result.Table = CS;
 
             return result;
         }
@@ -117,7 +117,7 @@ namespace ElectreTri
             var result = new Result
             {
                 Rank = GetMatrix(GetColNumber(A), GetColNumber(pp)),
-                Cs = GetMatrix(GetColNumber(A), GetColNumber(pp))
+                Table = GetMatrix(GetColNumber(A), GetColNumber(pp))
             };
             return result;
         }
@@ -141,6 +141,6 @@ namespace ElectreTri
     internal class Result
     {
         public double[][] Rank { get; set; }
-        public double[][] Cs { get; set; }
+        public double[][] Table { get; set; }
     }
 }
