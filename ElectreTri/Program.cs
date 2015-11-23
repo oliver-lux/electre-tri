@@ -10,6 +10,7 @@ namespace ElectreTri
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
